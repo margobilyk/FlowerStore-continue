@@ -12,10 +12,8 @@ public class Flower extends Item {
     private double price;
     @Getter
     private FlowerType flowerType;
-
-    public Flower(double sepalLength, FlowerColor color, double price) {
-        // this.flowerType = flowerType;
-        this.sepalLength = sepalLength;
+    public Flower(double sepLength, FlowerColor color, double price){
+        this.sepalLength = sepLength;
         this.color = color;
         this.price = price;
     }
@@ -37,14 +35,5 @@ public class Flower extends Item {
     public double price() {
         return getPrice();
     }
-
-    // public double getPrice() {
-    //     return price;
-    // }
-
-    // public FlowerType getFlowerType() {
-    //     return flowerType;
-    // }
-
 }
 
