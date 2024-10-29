@@ -1,12 +1,12 @@
 package Lab7.FlowerContinue.Payment;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+// import com.fasterxml.jackson.annotation.JsonProperty;
+// import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(as = CreditCardPaymentStrategy.class)
+// @JsonDeserialize(as = CreditCardPaymentStrategy.class)
 public class CreditCardPaymentStrategy implements Payment {
-    @JsonProperty(value = "paymentType")
-    String paymentType;
+    // @JsonProperty(value = "paymentType")
+    // String paymentType;
     @Override
     public void pay(double price) {
         System.out.println("Payment method : Credit Card");

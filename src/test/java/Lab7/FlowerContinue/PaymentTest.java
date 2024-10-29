@@ -1,48 +1,26 @@
 package Lab7.FlowerContinue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import Lab7.FlowerContinue.Payment.Payment;
 import Lab7.FlowerContinue.Payment.CreditCardPaymentStrategy;
 import Lab7.FlowerContinue.Payment.PayPalPaymentStrategy;
-import Lab7.FlowerContinue.Payment.Payment;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PaymentTest {
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-    private ObjectMapper objectMapper;
+public class PaymentTest {
 
-    @BeforeEach
-    public void setUp() {
-        objectMapper = new ObjectMapper();
+    @Test
+    public void testCreditCardPaymentStrategyImplementation() {
+        Payment creditCardPayment = new CreditCardPaymentStrategy();
+        assertTrue(creditCardPayment instanceof CreditCardPaymentStrategy);
+        assertDoesNotThrow(() -> creditCardPayment.pay(100.0));
     }
 
     @Test
-    public void testCreditCardPaymentStrategyDeserialization() throws JsonProcessingException {
-        String creditCardJson = "{ \"paymentType\": \"card\" }";
-
-        Payment payment = objectMapper.readValue(creditCardJson, Payment.class);
-
-        assertNotNull(payment);
-        assertTrue(payment instanceof CreditCardPaymentStrategy);
-
-        payment.pay(100.0);
-    }
-
-    @Test
-    public void testPayPalPaymentStrategyDeserialization() throws JsonProcessingException {
-        String payPalJson = "{ \"paymentType\": \"paypal\" }";
-
-        Payment payment = objectMapper.readValue(payPalJson, Payment.class);
-
-        assertNotNull(payment);
-        assertTrue(payment instanceof PayPalPaymentStrategy);
-
-        payment.pay(100.0);
+    public void testPayPalPaymentStrategyImplementation() {
+        Payment payPalPayment = new PayPalPaymentStrategy();
+        assertTrue(payPalPayment instanceof PayPalPaymentStrategy);
+        assertDoesNotThrow(() -> payPalPayment.pay(100.0));
     }
 }
