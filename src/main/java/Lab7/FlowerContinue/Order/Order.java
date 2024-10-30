@@ -17,10 +17,6 @@ public class Order {
         this.delivery = delivery;
     }
 
-    // public Order() {
-    //     this.items = new LinkedList<>();
-    // }
-
     public void setPaymentStrategy(Payment payment) {
         this.payment = payment;
     }
